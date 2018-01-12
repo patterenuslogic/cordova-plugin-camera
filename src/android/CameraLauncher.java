@@ -66,6 +66,8 @@ import android.util.Base64;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import java.util.Random;
+
 /**
  * This class launches the camera view, allows the user to take a picture, closes the camera view,
  * and returns the captured image.  When the camera view is closed, the screen displayed before
@@ -335,7 +337,9 @@ public class CameraLauncher extends CordovaPlugin implements MediaScannerConnect
      */
     private File createCaptureFile(int encodingType, String fileName) {
         if (fileName.isEmpty()) {
-            fileName = "rey54hbrt547854ruyrt";
+            Random random = new Random();
+            int randomInt = random.nextInt(999999);
+            fileName = Integer.toString(randomInt);
         }
 
         if (encodingType == JPEG) {
